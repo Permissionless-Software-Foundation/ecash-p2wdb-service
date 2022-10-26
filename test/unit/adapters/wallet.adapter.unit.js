@@ -6,7 +6,7 @@
 const assert = require('chai').assert
 const sinon = require('sinon')
 const fs = require('fs')
-const BchWallet = require('minimal-slp-wallet/index')
+const BchWallet = require('minimal-ecash-wallet')
 // const BCHJS = require('@psf/bch-js')
 
 // Local libraries.
@@ -283,7 +283,7 @@ describe('#wallet', () => {
       // Ensure we open the test file, not the production wallet file.
       uut.WALLET_FILE = testWalletFile
 
-      // mock instance of minimal-slp-wallet
+      // mock instance of minimal-ecash-wallet
       uut.bchWallet = new MockBchWallet()
 
       const result = await uut.incrementNextAddress()
@@ -310,7 +310,7 @@ describe('#wallet', () => {
       // Ensure we open the test file, not the production wallet file.
       uut.WALLET_FILE = testWalletFile
 
-      // mock instance of minimal-slp-wallet
+      // mock instance of minimal-ecash-wallet
       uut.bchWallet = new MockBchWallet()
 
       const result = await uut.getKeyPair()
