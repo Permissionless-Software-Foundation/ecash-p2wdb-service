@@ -1,4 +1,4 @@
-# ipfs-p2wdb-service
+# ecash-p2wdb-service
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
@@ -7,6 +7,8 @@
 P2WDB is an acronym for **pay-to-write database**. It's a peer-to-peer (p2p) database that operates over [IPFS](https://ipfs.io), and functions similarly to a blockchain.
 
 This code repository is the 'server' or 'service' side, for operating a P2WDB locally. If you simply want to read or write data to the P2WDB, check out the 'client' JavaScript library: [p2wdb](https://www.npmjs.com/package/p2wdb).
+
+This is the eCash (XEC) blockchain instance of the P2WDB. It is forked from the [Bitcoin Cash (BCH) instance of the P2WDB](https://github.com/Permissionless-Software-Foundation/ipfs-p2wdb-service).
 
 The P2WDB has the advantages of a blockchain:
 - There are multiple *nodes* on the network hosting their own copy of the database.
