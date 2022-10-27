@@ -142,38 +142,41 @@ class WritePrice {
     try {
       if (!targetDate) throw new Error('targetDate input is required.')
 
-      if (!this.priceHistory.length) throw new Error('No price history found. Run getCostsFromToken() first.')
+      // if (!this.priceHistory.length) throw new Error('No price history found. Run getCostsFromToken() first.')
+      //
+      // // Ensure the input is a Date object.
+      // targetDate = new Date(targetDate)
+      //
+      // const rates = this.priceHistory
+      // // console.log('rates: ', rates)
+      //
+      // let result
+      // let bestDateDiff = 100000000000 // Init to a large number
+      //
+      // // Loop through the array of rate data. Find the data that currently applies.
+      // for (let i = 0; i < rates.length; i++) {
+      //   // The correct rate is the one closest to the current date.
+      //
+      //   const thisRate = rates[i]
+      //   const rateDate = new Date(thisRate.date)
+      //
+      //   // let rateDateDiff = bestDateDiff
+      //
+      //   const rateDateDiff = Math.abs(targetDate.getTime() - rateDate.getTime())
+      //
+      //   // console.log(`rateDateDiff ${i}: `, rateDateDiff)
+      //
+      //   if (rateDateDiff < bestDateDiff) {
+      //     bestDateDiff = rateDateDiff
+      //     result = thisRate
+      //   }
+      // }
+      // // console.log('currentRate: ', currentRate)
+      //
+      // return result.psfPerWrite
 
-      // Ensure the input is a Date object.
-      targetDate = new Date(targetDate)
-
-      const rates = this.priceHistory
-      // console.log('rates: ', rates)
-
-      let result
-      let bestDateDiff = 100000000000 // Init to a large number
-
-      // Loop through the array of rate data. Find the data that currently applies.
-      for (let i = 0; i < rates.length; i++) {
-        // The correct rate is the one closest to the current date.
-
-        const thisRate = rates[i]
-        const rateDate = new Date(thisRate.date)
-
-        // let rateDateDiff = bestDateDiff
-
-        const rateDateDiff = Math.abs(targetDate.getTime() - rateDate.getTime())
-
-        // console.log(`rateDateDiff ${i}: `, rateDateDiff)
-
-        if (rateDateDiff < bestDateDiff) {
-          bestDateDiff = rateDateDiff
-          result = thisRate
-        }
-      }
-      // console.log('currentRate: ', currentRate)
-
-      return result.psfPerWrite
+      // Temporarily hard-coding value.
+      return 0.1
     } catch (err) {
       console.error('Error in adapters/write-price.js/getTargetCostPsf(): ', err)
       throw err

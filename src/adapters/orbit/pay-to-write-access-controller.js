@@ -370,7 +370,7 @@ class PayToWriteAccessController extends AccessController {
     } catch (err) {
       console.error(
         'Error in adapters/orbit/pay-to-write-access-controller.js/validateAgainstBlockchain(): ',
-        err.message
+        err
       )
 
       // Add the invalid entry to the MongoDB if the error message matches
@@ -592,11 +592,15 @@ class PayToWriteAccessController extends AccessController {
 
       // Get the address for the second output of the TX.
       const addresses = tx.vout[1].scriptPubKey.addresses
-      const address = addresses[0]
+      let address = addresses[0]
 
       console.log(`address: ${address}`)
       console.log(`signature: ${signature}`)
       console.log(`message: ${message}`)
+
+      if (address.includes('ecash')) {
+        address = this.bchjs.Address.ecashtoCashAddress(address)
+      }
 
       // Verify the signed message is owned by the address.
       const isValid = this.bchjs.BitcoinCash.verifyMessage(

@@ -173,7 +173,10 @@ class AddEntry {
         bchWallet: this.adapters.wallet.bchWallet,
         serverURL
       })
+
+      console.log('Entering write.postEntry()')
       const hash = await write.postEntry(data, appId)
+      console.log('Exited write.postEntry()')
 
       return hash
     } catch (err) {
