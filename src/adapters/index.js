@@ -53,19 +53,20 @@ class Adapters {
 
   async start () {
     try {
-      if (this.config.getJwtAtStartup) {
-        // Get a JWT token and instantiate bch-js with it. Then pass that instance
-        // to all the rest of the apps controllers and adapters.
-        await this.fullStackJwt.getJWT()
-        // Instantiate bch-js with the JWT token, and overwrite the placeholder for bch-js.
-        this.bchjs = await this.fullStackJwt.instanceBchjs()
-      }
+      // if (this.config.getJwtAtStartup) {
+      //   // Get a JWT token and instantiate bch-js with it. Then pass that instance
+      //   // to all the rest of the apps controllers and adapters.
+      //   await this.fullStackJwt.getJWT()
+      //   // Instantiate bch-js with the JWT token, and overwrite the placeholder for bch-js.
+      //   this.bchjs = await this.fullStackJwt.instanceBchjs()
+      // }
 
       // Do not start these adapters if this is an e2e test.
       if (this.config.env !== 'test') {
         // Get the write price from the reference token.
-        await this.writePrice.getCostsFromToken()
-        const currentRate = this.writePrice.getCurrentCostPSF()
+        // await this.writePrice.getCostsFromToken()
+        // const currentRate = this.writePrice.getCurrentCostPSF()
+        const currentRate = 0.1
         console.log(`Current P2WDB cost is ${currentRate} PSF tokens per write.`)
 
         // Only execute the code in this block if BCH payments are enabled.

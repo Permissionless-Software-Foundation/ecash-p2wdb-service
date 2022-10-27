@@ -185,14 +185,19 @@ class WritePrice {
   // to essentailly exchange a PSF tokens for BCH, in order to write to the DB.
   async getPsfPriceInBch () {
     try {
-      const response = await this.axios.get('https://psfoundation.cash/price')
-      // console.log('response.data: ', response.data)
+      await this.instanceWallet()
 
-      const usdPerBch = response.data.usdPerBCH
-      const usdPerToken = response.data.usdPerToken
-
-      const bchPerToken = this.bchjs.Util.floor8(usdPerToken / usdPerBch)
+      // const response = await this.axios.get('https://psfoundation.cash/price')
+      // // console.log('response.data: ', response.data)
+      //
+      // const usdPerBch = response.data.usdPerBCH
+      // const usdPerToken = response.data.usdPerToken
+      //
+      // const bchPerToken = this.bchjs.Util.floor8(usdPerToken / usdPerBch)
       // console.log('bchPerToken: ', bchPerToken)
+
+      // Temporary hard coded value.
+      const bchPerToken = 0.00080727
 
       return bchPerToken
     } catch (err) {
