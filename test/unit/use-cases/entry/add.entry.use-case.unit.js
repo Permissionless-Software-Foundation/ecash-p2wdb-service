@@ -205,6 +205,7 @@ describe('#AddEntry', () => {
       // Mock the P2WDB library
       uut.Write = class Write {
         async postEntry () { return 'fake-hash' }
+        async checkForSufficientFunds () { return { hasEnoughPsf: true } }
       }
 
       const data = {
