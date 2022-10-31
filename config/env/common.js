@@ -49,7 +49,7 @@ module.exports = {
   // ipfs-bch-wallet-consumer URL
   consumerUrl: process.env.CONSUMER_URL
     ? process.env.CONSUMER_URL
-    : 'https://free-bch.fullstack.cash/',
+    : 'https://xec-consumer-or1-usa.fullstackcash.nl',
 
   // IPFS settings.
   isCircuitRelay: process.env.ENABLE_CIRCUIT_RELAY ? true : false,
@@ -57,13 +57,13 @@ module.exports = {
   crDomain: process.env.CR_DOMAIN ? process.env.CR_DOMAIN : '',
 
   // Information passed to other IPFS peers about this node.
-  apiInfo: 'https://ipfs-service-provider.fullstack.cash/',
+  apiInfo: 'https://p2wdb.com',
 
   // P2W DB OrbitDB name.
   orbitDbName: process.env.ORBITDB_NAME
     ? process.env.ORBITDB_NAME
-    // : 'psf-bch-p2wdb-keyvalue-v3.0.0-0001', // Start a new database
-    : '/orbitdb/zdpuAqNiwLiJBfbRK7uihV2hAbNSXj78ufzv5VyQb8GuvRwDh/psf-bch-p2wdb-keyvalue-v3.0.0-0001', // Subscribe to an existing database.
+    // : 'psf-xec-p2wdb-keyvalue-v3.0.0-0001', // Start a new database
+    : '/orbitdb/zdpuApryyp2cJvypc8Dyv94hgopuHNEYTk2TsE5ig9TWjEi7F/psf-xec-p2wdb-keyvalue-v3.0.0-0001', // Subscribe to an existing database.
 
   // Maximum size of a new database entry.
   maxDataSize: process.env.MAX_DATA_SIZE
@@ -73,7 +73,7 @@ module.exports = {
   // SLP Token to use for this database.
   tokenId: process.env.TOKEN_ID
     ? process.env.TOKEN_ID
-    : '38e97c5d7d3585a2cbf3f9580c82ca33985f9cb0845d4dcce220cb709f9538b0',
+    : '73fcc96ad73948a102a8cabac8fe1808f94f1a8ec5536b0f4d7c524ac63fc44a',
 
   // Quantity of tokens required to burn in order to write to DB.
   reqTokenQty: process.env.REQ_TOKEN_QTY

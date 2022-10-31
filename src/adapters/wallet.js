@@ -3,7 +3,7 @@
 */
 
 // Public npm libraries
-const BchWallet = require('minimal-slp-wallet/index')
+const BchWallet = require('minimal-ecash-wallet')
 
 // Local libraries
 const JsonFiles = require('./json-files')
@@ -60,8 +60,8 @@ class WalletAdapter {
     }
   }
 
-  // Create an instance of minimal-slp-wallet. Use data in the wallet.json file,
-  // and pass the bch-js information to the minimal-slp-wallet library.
+  // Create an instance of minimal-ecash-wallet. Use data in the wallet.json file,
+  // and pass the bch-js information to the minimal-ecash-wallet library.
   async instanceWallet (walletData) {
     try {
       // console.log(`instanceWallet() walletData: ${JSON.stringify(walletData, null, 2)}`)
@@ -82,7 +82,7 @@ class WalletAdapter {
         advancedConfig.restURL = this.config.consumerUrl
       }
 
-      // Instantiate minimal-slp-wallet.
+      // Instantiate minimal-ecash-wallet.
       // this.bchWallet = new this.BchWallet(walletData.mnemonic, advancedConfig)
       this.bchWallet = await this._instanceWallet(walletData.mnemonic, advancedConfig)
 
@@ -101,7 +101,7 @@ class WalletAdapter {
     }
   }
 
-  // This is simply a wrapper for the initialize() function built into minimal-slp-wallet.
+  // This is simply a wrapper for the initialize() function built into minimal-ecash-wallet.
   async initialize () {
     await this.bchWallet.initialize()
 
@@ -134,7 +134,7 @@ class WalletAdapter {
         advancedConfig.restURL = this.config.consumerUrl
       }
 
-      // Instantiate minimal-slp-wallet.
+      // Instantiate minimal-ecash-wallet.
       // this.bchWallet = new this.BchWallet(walletData.mnemonic, advancedConfig)
       this.bchWallet = await this._instanceWallet(walletData.mnemonic, advancedConfig)
 

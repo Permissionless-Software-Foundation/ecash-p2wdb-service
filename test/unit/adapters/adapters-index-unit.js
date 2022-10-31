@@ -64,9 +64,9 @@ describe('#adapters', () => {
     it('should catch and throw an error', async () => {
       try {
         // Force an error
-        uut.config.getJwtAtStartup = false
-        uut.config.env = 'dev'
-        sandbox.stub(uut.writePrice, 'getCostsFromToken').rejects(new Error('test error'))
+        uut.config.env = 'not-test'
+        uut.config.enableBchPayment = false
+        sandbox.stub(uut.ipfs, 'start').rejects(new Error('test error'))
 
         await uut.start()
 

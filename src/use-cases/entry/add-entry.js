@@ -5,7 +5,7 @@
 */
 
 // Global npm libraries
-const { Write } = require('p2wdb/index')
+const { Write } = require('p2wdb')
 
 // Local libraries
 const DBEntry = require('../../entities/db-entry')
@@ -158,16 +158,25 @@ class AddEntry {
       // Delete the database model.
       await bchPayment.remove()
 
-      let blockchainInterface = 'consumer-api'
-      if (this.config.useFullStackCash) {
-        blockchainInterface = 'rest-api'
-      }
+      // let blockchainInterface = 'consumer-api'
+      // if (this.config.useFullStackCash) {
+      //   blockchainInterface = 'rest-api'
+      // }
 
       // Write an entry to this P2WDB, using the PSF tokens in this apps wallet.
-      const appWif = this.adapters.wallet.bchWallet.walletInfo.privateKey
+      // const appWif = this.adapters.wallet.bchWallet.walletInfo.privateKey
 
-      const write = new this.Write({ wif: appWif, serverURL: `http://localhost:${this.config.port}`, interface: blockchainInterface })
+      // const write = new this.Write({ wif: appWif, serverURL: `http://localhost:${this.config.port}`, interface: blockchainInterface })
+
+      const serverURL = `http://localhost:${this.config.port}`
+      const write = new this.Write({
+        bchWallet: this.adapters.wallet.bchWallet,
+        serverURL
+      })
+
+      console.log('Entering write.postEntry()')
       const hash = await write.postEntry(data, appId)
+      console.log('Exited write.postEntry()')
 
       return hash
     } catch (err) {
@@ -178,7 +187,10 @@ class AddEntry {
 
   // This function is used for easier mocking during tests.
   async _createTempWallet (wif) {
-    const tempWallet = new this.adapters.wallet.BchWallet(wif, { interface: 'consumer-api' })
+    const tempWallet = new this.adapters.wallet.BchWallet(wif, {
+      interface: 'consumer-api',
+      restURL: this.config.consumerUrl
+    })
     await tempWallet.walletInfoPromise
     return tempWallet
   }
