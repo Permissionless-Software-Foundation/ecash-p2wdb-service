@@ -20,7 +20,7 @@ services:
     #  dockerfile: Dockerfile
     container_name: ipfs
     environment:
-      IPFS_DAEMON_ARGUMENTS: '--enable-pubsub-experiment --migrate=true --agent-version-suffix=docker --routing=dhtclient'
+      IPFS_DAEMON_ARGUMENTS: '--enable-pubsub-experiment --migrate=true --agent-version-suffix=docker --routing=dhtclient --enable-gc'
       UPLOAD_KBPS: '1000'
       DOWNLOAD_KBPS: '1000'
     logging:
@@ -42,8 +42,8 @@ services:
     restart: always
 
   p2wdb:
-    #build: .
-    image: christroutner/p2wdb:v3.1.8
+    build: .
+    #image: christroutner/p2wdb:v3.1.8
     container_name: p2wdb
     logging:
       driver: 'json-file'
@@ -59,6 +59,6 @@ services:
       #- 5668:5668 # IPFS TCP port
       #- 5669:5669 # IPFS WS Port
     volumes:
-      - ../data/ipfsdata/p2wdb:/home/safeuser/ipfs-p2wdb-service/.ipfsdata/p2wdb
-      - ./start-production.sh:/home/safeuser/ipfs-p2wdb-service/start-production.sh
+      - ../data/ipfsdata/p2wdb:/home/safeuser/ecash-p2wdb-service/.ipfsdata/p2wdb
+      - ./start-production.sh:/home/safeuser/ecash-p2wdb-service/start-production.sh
     restart: always
