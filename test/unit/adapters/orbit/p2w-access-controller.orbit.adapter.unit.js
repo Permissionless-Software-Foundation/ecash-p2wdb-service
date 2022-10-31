@@ -285,7 +285,7 @@ describe('#PayToWriteAccessController', () => {
       sandbox.stub(uut.wallet, 'getTxData').resolves([
         {
           tokenId:
-            '38e97c5d7d3585a2cbf3f9580c82ca33985f9cb0845d4dcce220cb709f9538b0',
+            '73fcc96ad73948a102a8cabac8fe1808f94f1a8ec5536b0f4d7c524ac63fc44a',
           isValidSlp: true,
           vin: [],
           vout: []
