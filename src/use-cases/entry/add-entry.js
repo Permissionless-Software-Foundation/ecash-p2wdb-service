@@ -42,6 +42,7 @@ class AddEntry {
     _this = this
   }
 
+  // A user is explicitly adding a new entry to the database.
   async addUserEntry (rawData) {
     try {
       // Generate a validated entry by passing the raw data through input validation.
@@ -173,6 +174,13 @@ class AddEntry {
         bchWallet: this.adapters.wallet.bchWallet,
         serverURL
       })
+
+      // Check to see if this server has enough PSF.
+      const serverBalance = await write.checkForSufficientFunds()
+      console.log('serverBalance: ', serverBalance)
+      if (!serverBalance.hasEnoughPsf) {
+        throw new Error('P2WDB server does not have enough PSF to pay for write.')
+      }
 
       console.log('Entering write.postEntry()')
       const hash = await write.postEntry(data, appId)
